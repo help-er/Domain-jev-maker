@@ -1,0 +1,125 @@
+{
+  "domain": "travel_support",
+  "description": "Travel and trip-logistics assistant intent routing",
+  "question": [
+    "Which travel request is the customer making?",
+    "What does this traveller's message ask for?",
+    "Route this message to the right travel intent."
+  ],
+  "source": {
+    "train": {
+      "kind": "hf",
+      "dataset": "clinc/clinc_oos",
+      "config": "plus",
+      "split": "train",
+      "text_field": "text",
+      "label_field": "intent"
+    },
+    "test": {
+      "kind": "hf",
+      "dataset": "clinc/clinc_oos",
+      "config": "plus",
+      "split": "test",
+      "text_field": "text",
+      "label_field": "intent"
+    }
+  },
+  "oos_label": "oos",
+  "abstain_label": "out_of_scope",
+  "abstain_criteria": "the message is not a travel or trip-logistics request at all",
+  "intents": {
+    "book_flight": "asking to book or buy a flight",
+    "flight_status": "asking whether a flight is on time, delayed or cancelled",
+    "book_hotel": "asking to book a hotel or place to stay",
+    "car_rental": "asking to rent or hire a car",
+    "uber": "asking for a rideshare or taxi",
+    "international_visa": "asking whether a visa is needed or how to get one",
+    "vaccines": "asking what vaccinations a destination requires",
+    "carry_on": "asking what may be taken in hand luggage",
+    "lost_luggage": "reporting baggage that has gone missing",
+    "travel_alert": "asking about safety warnings or advisories for a destination",
+    "travel_notification": "telling the bank about upcoming travel so cards keep working",
+    "travel_suggestion": "asking where to go or what to do on a trip",
+    "timezone": "asking the local time or time difference somewhere",
+    "plug_type": "asking what electrical plug or adapter a country uses",
+    "international_fees": "asking about charges for using a card abroad",
+    "directions": "asking how to get from one place to another",
+    "distance": "asking how far away somewhere is",
+    "current_location": "asking where the traveller currently is",
+    "confirm_reservation": "asking to confirm or check an existing booking",
+    "cancel_reservation": "asking to cancel an existing booking",
+    "restaurant_reservation": "asking to book a table at a restaurant",
+    "restaurant_suggestion": "asking where to eat",
+    "accept_reservations": "asking whether a venue takes bookings at all",
+    "how_busy": "asking how crowded or busy somewhere is"
+  },
+  "confusable": [
+    [
+      "book_flight",
+      "flight_status"
+    ],
+    [
+      "confirm_reservation",
+      "cancel_reservation"
+    ],
+    [
+      "restaurant_reservation",
+      "restaurant_suggestion"
+    ],
+    [
+      "restaurant_reservation",
+      "accept_reservations"
+    ],
+    [
+      "travel_alert",
+      "travel_notification"
+    ],
+    [
+      "travel_suggestion",
+      "restaurant_suggestion"
+    ],
+    [
+      "directions",
+      "distance"
+    ],
+    [
+      "current_location",
+      "directions"
+    ],
+    [
+      "international_visa",
+      "vaccines"
+    ],
+    [
+      "carry_on",
+      "lost_luggage"
+    ],
+    [
+      "uber",
+      "car_rental"
+    ],
+    [
+      "accept_reservations",
+      "how_busy"
+    ],
+    [
+      "book_hotel",
+      "car_rental"
+    ],
+    [
+      "timezone",
+      "current_location"
+    ]
+  ],
+  "joiners": [
+    "{a} Also, {b}",
+    "{a} And separately, {b}",
+    "Two things: {a} {b}",
+    "{a} On top of that, {b}"
+  ],
+  "hedges": [
+    "{a} Although maybe what I really mean is: {b} Not certain which.",
+    "Mainly this: {a} Though possibly: {b}",
+    "{a} Or is it more this: {b} I think it's the first one."
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "domain": "banking_support",
+  "description": "Retail banking and card support intent routing",
+  "question": [
+    "Which banking request is the customer making?",
+    "What does this customer message ask for?",
+    "Route this customer message to the right banking intent."
+  ],
+  "source": {
+    "train": {
+      "kind": "hf",
+      "dataset": "clinc/clinc_oos",
+      "config": "plus",
+      "split": "train",
+      "text_field": "text",
+      "label_field": "intent"
+    },
+    "test": {
+      "kind": "hf",
+      "dataset": "clinc/clinc_oos",
+      "config": "plus",
+      "split": "test",
+      "text_field": "text",
+      "label_field": "intent"
+    }
+  },
+  "oos_label": "oos",
+  "abstain_label": "out_of_scope",
+  "abstain_criteria": "the message is not a banking or card request at all",
+  "intents": {
+    "balance": "asking the current balance of an account",
+    "bill_balance": "asking how much is owed on a bill",
+    "bill_due": "asking when a bill or payment is due",
+    "pay_bill": "asking to pay a bill",
+    "transfer": "asking to move money between accounts",
+    "direct_deposit": "setting up or asking about direct deposit of pay",
+    "routing": "asking for a routing or sort code",
+    "order_checks": "asking to order new cheques",
+    "spending_history": "asking what they have spent or where",
+    "income": "asking about their recorded income",
+    "payday": "asking when they get paid",
+    "min_payment": "asking the minimum payment on a card",
+    "apr": "asking the APR or interest charged on a card",
+    "interest_rate": "asking the interest rate on an account",
+    "credit_limit": "asking what their credit limit is",
+    "credit_limit_change": "asking to raise or lower a credit limit",
+    "credit_score": "asking what their credit score is",
+    "improve_credit_score": "asking how to improve a credit score",
+    "rewards_balance": "asking about points, cashback or rewards",
+    "new_card": "asking to apply for or obtain a new card",
+    "replacement_card_duration": "asking how long a replacement card takes",
+    "damaged_card": "reporting a card that is physically damaged",
+    "report_lost_card": "reporting a card lost or stolen",
+    "card_declined": "reporting that a card was declined",
+    "expiration_date": "asking when a card expires",
+    "pin_change": "asking to change a PIN",
+    "report_fraud": "reporting fraudulent or unrecognised activity",
+    "account_blocked": "reporting an account they cannot access or that is blocked",
+    "freeze_account": "asking to freeze or lock an account",
+    "exchange_rate": "asking about currency exchange rates"
+  },
+  "confusable": [
+    [
+      "balance",
+      "bill_balance"
+    ],
+    [
+      "bill_due",
+      "pay_bill"
+    ],
+    [
+      "credit_limit",
+      "credit_limit_change"
+    ],
+    [
+      "credit_score",
+      "improve_credit_score"
+    ],
+    [
+      "report_lost_card",
+      "damaged_card"
+    ],
+    [
+      "report_fraud",
+      "card_declined"
+    ],
+    [
+      "account_blocked",
+      "freeze_account"
+    ],
+    [
+      "apr",
+      "interest_rate"
+    ],
+    [
+      "new_card",
+      "replacement_card_duration"
+    ],
+    [
+      "transfer",
+      "direct_deposit"
+    ]
+  ],
+  "joiners": [
+    "{a} Also, {b}",
+    "{a} And separately, {b}",
+    "Two things: {a} {b}",
+    "{a} On top of that, {b}"
+  ],
+  "hedges": [
+    "{a} Although maybe what I really mean is: {b} Not certain which.",
+    "Mainly this: {a} Though possibly: {b}",
+    "{a} Or is it more this: {b} I think it's the first one."
+  ]
+}

@@ -1,0 +1,16 @@
+# generated corpora, trained adapters, scored rows and API caches
+data/
+models/
+out/
+*.jsonl
+
+# never commit credentials
+*.key
+*key.txt
+.env
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store

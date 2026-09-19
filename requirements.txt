@@ -1,0 +1,14 @@
+# Core training / inference stack.
+# Install a CUDA build of torch for your platform first, e.g.
+#   pip install torch --index-url https://download.pytorch.org/whl/cu126
+# The default PyPI wheel is CPU-only on Windows.
+torch>=2.4
+transformers>=4.44
+peft>=0.12
+accelerate>=0.33
+
+# Corpus building. `datasets` is only needed for specs whose source kind is
+# "hf"; parquet sources need pandas + pyarrow alone.
+datasets>=2.20
+pandas>=2.0
+pyarrow>=15.0
