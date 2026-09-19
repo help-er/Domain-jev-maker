@@ -7,8 +7,10 @@ options. No text is generated — the distribution is the answer.
 One LoRA adapter over a 1.5B instruct backbone, about an hour on a single
 consumer GPU, served behind a `POST /v1/systemone` contract.
 
-**[GUIDE.md](GUIDE.md)** — the recipe, start here.
+**[GUIDE.md](GUIDE.md)** — the recipe. 
 **[RESULTS.md](RESULTS.md)** — what it measures against a frontier hosted model.
+
+To use this, simply download the files and point your favorite agent at them with your intended domain. Read on for more info.
 
 ---
 
